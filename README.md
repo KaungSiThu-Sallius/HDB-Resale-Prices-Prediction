@@ -37,7 +37,6 @@ To build a predictive model for HDB resale prices and implement the results on a
 
 - **Python (Pandas, Scikit-learn):** Data cleaning and machine learning modeling.
 - **Plotly Dash:** Visualization of trends and creation of an interactive dashboard.
-- **Flask (Optional Future Enhancement):** Develop a simple web application to display results.
 
 ---
 
@@ -48,7 +47,7 @@ To build a predictive model for HDB resale prices and implement the results on a
 | Week 1 | Collect and clean HDB resale data from government website. Fetch geospatial data using OneMap API. |
 | Week 2 | Perform exploratory data analysis to identify trends and patterns. Train and optimize machine learning models. |
 | Week 3 | Build a Plotly dashboard to visualize HDB price trends and predictions. Test and refine the dashboard for usability. |
-| Week 4 | Optional: Begin exploring Flask for potential future web app development. |
+| Week 4 | Prepare for production. |
 
 ---
 
@@ -71,7 +70,3 @@ To build a predictive model for HDB resale prices and implement the results on a
 - Enhance the model by incorporating additional features like interest rates and government policies.
 
 ---
-
-## Contact
-
-For any questions or collaboration opportunities, feel free to reach out!
