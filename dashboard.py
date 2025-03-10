@@ -7,6 +7,8 @@ external_stylesheets = [dbc.themes.CERULEAN]
 
 app = Dash(__name__, use_pages=True, suppress_callback_exceptions=True, external_stylesheets=external_stylesheets)
 
+server = app.server 
+
 button_container_style = {
     'display': 'flex',
     'gap': '1rem'
