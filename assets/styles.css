@@ -45,9 +45,9 @@ body,
 }
 
 .reset_btn {
-  position: absolute;
-  bottom: -270px;
-  left: 100px;
+  position: relative;
+  bottom: 61px;
+  left: 26px;
   font-size: 12px;
   background-color: #817dfa;
 }
