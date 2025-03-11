@@ -1,5 +1,1 @@
-data/model/best_lasso_cv_model.pkl
-data/model/best_rf_model.pkl
-data/model/lasso_model.pkl
-data/model/rf_model.pkl
-data/model/xgb_model.pkl
+data/model/*.pkl

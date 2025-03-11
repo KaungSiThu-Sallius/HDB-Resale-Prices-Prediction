@@ -8,6 +8,7 @@ import joblib
 import numpy as np
 import os
 from pathlib import Path
+import xgboost as xgb
 
 external_stylesheets = [dbc.themes.BOOTSTRAP]
 MODEL_PATH = Path('data/model/xgb_random_search_model.pkl')
@@ -16,18 +17,8 @@ dash.register_page(__name__)
 
 town_mrt_distance = pd.read_csv('data/town_mrt_distances.csv')
 
-def load_model():
-    try:
-        if os.path.exists(MODEL_PATH):
-            return joblib.load(MODEL_PATH)
-        else:
-            print(f"Model file not found at {MODEL_PATH}")
-            return None
-    except Exception as e:
-        print(f"Error loading model: {str(e)}")
-        return None
-
-model = load_model()
+model = xgb.XGBRegressor()
+model.load_model('data/model/xgb_random_search_model.json')
 
 town_list = ['ANG MO KIO', 'BEDOK', 'BISHAN', 'BUKIT BATOK', 'BUKIT MERAH', 
             'BUKIT PANJANG', 'BUKIT TIMAH', 'CENTRAL AREA', 'CHOA CHU KANG',
