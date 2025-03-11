@@ -217,7 +217,7 @@ def predict(n_clicks, town, floorArea, minLevelFloor, maxLevelFloor, flatType, f
     return html.Div([
         html.H4(f"Predictions Result", style={'color': '#7A695B'}),
         html.Div([
-            html.P(prediction_result, style={
+            html.Span(prediction_result, style={
                 'fontSize': '1.2rem',
                 'fontWeight': 'bold',
                 'color': '#333'
