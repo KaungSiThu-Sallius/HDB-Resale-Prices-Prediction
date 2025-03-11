@@ -8,17 +8,19 @@ import joblib
 import numpy as np
 import os
 from pathlib import Path
-import xgboost as xgb
 
 external_stylesheets = [dbc.themes.BOOTSTRAP]
-MODEL_PATH = Path('data/model/xgb_random_search_model.pkl')
 
 dash.register_page(__name__)
 
 town_mrt_distance = pd.read_csv('data/town_mrt_distances.csv')
 
-model = xgb.XGBRegressor()
-model.load_model('data/model/xgb_random_search_model.json')
+try:
+    MODEL_PATH = Path(__file__).parent.parent / 'data' / 'model' / 'xgb_random_search_model.pkl'
+    model = joblib.load(MODEL_PATH)
+except Exception as e:
+    print(f"Error loading model: {str(e)}")
+    model = None
 
 town_list = ['ANG MO KIO', 'BEDOK', 'BISHAN', 'BUKIT BATOK', 'BUKIT MERAH', 
             'BUKIT PANJANG', 'BUKIT TIMAH', 'CENTRAL AREA', 'CHOA CHU KANG',
@@ -222,4 +224,3 @@ def predict(n_clicks, town, floorArea, minLevelFloor, maxLevelFloor, flatType, f
             })
         ])
     ])
-    
