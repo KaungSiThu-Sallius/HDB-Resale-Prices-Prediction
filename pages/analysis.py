@@ -87,7 +87,7 @@ layout = dbc.Container([
         dbc.Col([
             dcc.Graph(id='floor_vs_price', figure=floor_vs_price_fig, className='shadow_box')
         ], width=6, style={'paddingRight': '0'})
-    ], style={'margin': '30px 0 0 0'}),
+    ], style={'margin': '40px 0 0 0'}),
     dbc.Row([
         # Graph 5
         dbc.Col([
