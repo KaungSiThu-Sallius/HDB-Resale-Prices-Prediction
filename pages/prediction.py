@@ -29,6 +29,10 @@ town_list = ['ANG MO KIO', 'BEDOK', 'BISHAN', 'BUKIT BATOK', 'BUKIT MERAH',
             'SEMBAWANG', 'SENGKANG', 'SERANGOON', 'TAMPINES', 'TOA PAYOH',
             'WOODLANDS', 'YISHUN']
 
+storey_range = ['01 TO 03', '04 TO 06', '07 TO 09', '10 TO 12', 
+'13 TO 15', '16 TO 18', '19 TO 21', '22 TO 24', '25 TO 27', '28 TO 30', '31 TO 33', 
+'34 TO 36', '37 TO 39', '40 TO 42', '43 TO 45', '46 TO 48', '49 TO 51']
+
 current_month = datetime.now().month
 
 flat_type = ['1 ROOM', '2 ROOM', '3 ROOM', '4 ROOM', '5 ROOM', 'EXECUTIVE', 'MULTI-GENERATION']
@@ -78,27 +82,18 @@ layout = dbc.Container([
                 ]),
                 dbc.Row([
                     dbc.Col([  
-                        dbc.Label("Min Floor Level", html_for="minLevelFloor"),
-                        dbc.Input(
-                            type="number",
-                            id="minLevelFloor",
-                            placeholder="Enter min floor level...",
-                            className="mb-3",
-                            min=1,
-                            max=51
+                        dbc.Label("Floor Level", html_for="floorLevel"),
+                        dcc.Dropdown(
+                            id='floorLevel',
+                            options=[
+                                {
+                                    "label": level, 'value': level
+                                } for level in storey_range
+                            ],
+                            placeholder= 'Select a floor level...',
+                            className="mb-3"
                         )
-                    ], width=6),
-                    dbc.Col([  
-                        dbc.Label("Max Floor Level", html_for="maxLevelFloor"),
-                        dbc.Input(
-                            type="number",
-                            id="maxLevelFloor",
-                            placeholder="Enter max floor level...",
-                            className="mb-3",
-                            min=1,
-                            max=51
-                        )
-                    ], width=6)
+                    ], width=12),
                 ]),
                 dbc.Row([
                     dbc.Col([
@@ -160,22 +155,19 @@ layout = dbc.Container([
     [
         State('town', 'value'),
         State('floorArea', 'value'),
-        State('minLevelFloor', 'value'),
-        State('maxLevelFloor', 'value'),
+        State('floorLevel', 'value'),
         State('flatType', 'value'),
         State('flatModel', 'value'),
         State('lease', 'value'),
     ]
 )
-def predict(n_clicks, town, floorArea, minLevelFloor, maxLevelFloor, flatType, flatModel, lease):
+def predict(n_clicks, town, floorArea, floorLevel, flatType, flatModel, lease):
     if n_clicks is None:
         return ""
     
-    if not all([town, floorArea, minLevelFloor, maxLevelFloor, flatType, flatModel, lease]):
+    if not all([town, floorArea, floorLevel, flatType, flatModel, lease]):
         return html.Div("Please fill in all fields", style={'color': 'red'})
-    
-    if minLevelFloor > maxLevelFloor:
-        return html.Div("Minimum floor level cannot be greater than maximum floor level", style={'color': 'red'})
+
     
     distance_km = town_mrt_distance[town_mrt_distance['town'] == town]['distance_km'].values[0]
     
@@ -191,6 +183,10 @@ def predict(n_clicks, town, floorArea, minLevelFloor, maxLevelFloor, flatType, f
     flatTypeFeature["flat_type_"+flatType] = 1
     townFeatures["town_"+town] = 1
     flatModelFeatures["flat_model_"+flatModel] = 1
+    
+
+    minLevelFloor = int(floorLevel.split(' TO ')[0])
+    maxLevelFloor = int(floorLevel.split(' TO ')[1])
     
     inputFeatures = np.array([[
         floorArea, lease, distance_km, current_month, minLevelFloor, maxLevelFloor, flatTypeFeature['flat_type_2 ROOM'],
@@ -212,15 +208,15 @@ def predict(n_clicks, town, floorArea, minLevelFloor, maxLevelFloor, flatType, f
         ]])
 
     prediction = model.predict(inputFeatures)
-    prediction_result = 'S$ '+str(prediction[0])
+    price = round(prediction[0])
+    prediction_result = f"S$ {price:,.0f}"
     
     return html.Div([
-        html.H4(f"Predictions Result", style={'color': '#7A695B'}),
+        html.H4(f"Predicted Resale Price is ", style={'color': '#7A695B'}),
         html.Div([
-            html.Span(prediction_result, style={
-                'fontSize': '1.2rem',
+            html.H4(prediction_result, style={
                 'fontWeight': 'bold',
-                'color': '#333'
+                'color': '#7A695B'
             })
         ])
     ])
