@@ -125,11 +125,12 @@ Based on EDA insights, the following features were engineered for model training
 3.  **Hyperparameter Tuning:**
     *   **Random Forest & XGBoost:** `RandomizedSearchCV` was used to find optimal hyperparameters, optimizing for `neg_root_mean_squared_error` (Random Forest) or `neg_mean_absolute_error` (XGBoost) with 3-fold cross-validation.
     *   **Lasso Regression:** `LassoCV` was used to determine the best `alpha` (regularization strength).
-4.  **Model Training & Saving:** Models were trained on the training data. The trained models, including those from `RandomizedSearchCV`, were saved as `.pkl` files using `joblib` (e.g., `data/model/xgb_random_search_model.pkl`).
+4.  **Model Training & Saving:** Models were trained on the training data. The trained models, including those from `RandomizedSearchCV`, were saved as `.pkl` files using `joblib`.
 5.  **Evaluation Metrics:**
     *   **Root Mean Squared Error (RMSE):** Measures the average magnitude of the errors.
     *   **R-squared (R²) Score:** Represents the proportion of the variance in the dependent variable that is predictable from the independent variables.
 6.  **Model Comparison:** The performance of the tuned models (Random Forest, XGBoost, Lasso) was compared using bar charts for RMSE and R² scores on both training and testing datasets. The XGBoost Regressor generally showed the best performance on the test set.
+![Model Comparison](assets/model_comparison.png)
 
 ### E. Error Analysis
 
@@ -317,6 +318,5 @@ HDB-Resale-Prices-Prediction/
 ## Author
 
 Kaung Si Thu
-*   *(You can add links to your GitHub profile, LinkedIn, or portfolio website here)*
 
 ---
