@@ -187,7 +187,6 @@ HDB-Resale-Prices-Prediction/
 ├── .DS_Store
 ├── .gitignore
 ├── dashboard.py            # Main Dash application script
-├── Kaung Si Thu (MMDT project proposal)(055).docx # Project proposal document
 ├── main.ipynb              # Jupyter notebook for data processing, EDA, and model training
 ├── Procfile                # For Heroku deployment
 ├── README.md               # Project documentation (this file)
