@@ -159,6 +159,8 @@ This page presents various visualizations derived from the HDB resale data:
 *   Clicking on a town in the choropleth map dynamically updates the "Trend of Average Resale Prices" and "Resale Price Distribution by Flat Type" charts to display data specific to the selected town.
 *   A "Reset Map" button reverts the filtered charts to show overall data.
 
+![Analysis Page](assets/analysis_page.png)
+
 ### B. Prediction Page (`pages/prediction.py`)
 
 This page provides an interface for users to get HDB resale price predictions:
@@ -178,6 +180,7 @@ This page provides an interface for users to get HDB resale price predictions:
     6.  These features are then fed into the pre-trained XGBoost model (`xgb_random_search_model.pkl`).
 *   **Output:** The page displays the predicted HDB resale price (e.g., "Predicted Resale Price is S$ XXX,XXX").
 
+![Prediction Page](assets/prediction_page.png)
 ---
 
 ## Project Structure
@@ -193,7 +196,10 @@ HDB-Resale-Prices-Prediction/
 ├── requirements.txt        # Python dependencies
 ├── assets/                 # CSS, logo for dashboard
 │   ├── logo.png
-│   └── styles.css
+│   ├── styles.css
+│   ├── model_comparison.png
+│   ├── analysis_page.png
+│   └── prediction_page.png
 ├── data/
 │   ├── .DS_Store
 │   ├── clean_hdb_coordinate_data.csv # HDB flats with lat/lon
@@ -220,23 +226,22 @@ HDB-Resale-Prices-Prediction/
 
 ## Tools and Technologies
 
-*   **Programming Language:** Python (v3.x)
+*   **Programming Language:** Python
 *   **Data Manipulation & Analysis:** Pandas, NumPy
 *   **Geospatial Analysis:** GeoPandas, Shapely
-*   **Machine Learning:** Scikit-learn (for `train_test_split`, `RandomizedSearchCV`, `LassoCV`, `StandardScaler`, metrics), XGBoost
+*   **Machine Learning:** Scikit-learn , XGBoost
 *   **Data Visualization:** Matplotlib, Seaborn (in `main.ipynb`), Plotly (for interactive dashboard charts)
 *   **Web Framework (Dashboard):** Dash, Dash Bootstrap Components
 *   **Web Scraping (for MRT names in notebook):** BeautifulSoup
 *   **Notebook Environment:** Jupyter Notebook
 *   **Model Persistence:** Joblib
-*   **API Interaction (for coordinates in notebook):** Requests
 
 ---
 
 ## How to Run the Project
 
 ### Prerequisites:
-*   Python 3.x
+*   Python
 *   pip (Python package installer)
 *   Git (for cloning the repository)
 
@@ -284,7 +289,7 @@ HDB-Resale-Prices-Prediction/
     *   **Test Set R² Score:** 0.9700
     *   This indicates that the model can explain approximately 97% of the variance in HDB resale prices and has an average prediction error of about S$28,371.
 *   **Prediction Error Rate:** The model's predictions deviate by approximately **±5.82%** from the actual resale price on average.
-*   **Key Factors Influencing Prices (from EDA and model feature importance if available, implied by features used):**
+*   **Key Factors Influencing Prices:**
     *   **Floor Area:** Larger flats generally command higher prices.
     *   **Remaining Lease:** Flats with longer remaining leases are typically more expensive.
     *   **Distance to Nearest MRT:** Proximity to MRT stations is a significant factor, with flats closer to MRTs generally having higher values.
@@ -297,7 +302,6 @@ HDB-Resale-Prices-Prediction/
 
 ## Future Enhancements
 
-(Based on original README and potential improvements)
 *   **Real-time Data Integration:** Implement mechanisms to automatically update the datasets from `data.gov.sg` or other relevant APIs to keep the model and analyses current.
 *   **Advanced Feature Engineering:**
     *   Incorporate more granular location-based features (e.g., proximity to schools, shopping malls, parks).
@@ -310,12 +314,12 @@ HDB-Resale-Prices-Prediction/
     *   Add more interactive filtering options to the Analysis page.
     *   Improve the UI/UX for better readability and user experience.
     *   Include feature importance plots from the model on the dashboard.
-*   **Deployment:** Package the application for easier deployment on cloud platforms (e.g., Heroku, AWS, Google Cloud). The existing `Procfile` suggests Heroku was considered.
 
 ---
 
 ## Author
 
 Kaung Si Thu
+kaungsithu.sallius@gmail.com
 
 ---
