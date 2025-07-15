@@ -13,7 +13,7 @@ For hundreds of thousands of Singaporeans, buying or selling an HDB flat is the 
 - **Buyers** risk overpaying.
 - **Sellers** risk undervaluing their property.
 
-Our project tackled this problem by building a tool to replace guesswork with data-driven valuation insights, empowering users to make confident decisions.
+Our project tackled this problem by building a tool to replace guess-work with data-driven valuation insights, empowering users to make confident decisions.
 
 ---
 
