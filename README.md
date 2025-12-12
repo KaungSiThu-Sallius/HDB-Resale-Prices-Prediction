@@ -67,7 +67,7 @@ Set a competitive, data-driven price to avoid undervaluation.
 ### ✅ Democratizing Data
 Put advanced market intelligence—once exclusive to property agents—into the hands of everyone. Understand how specific features (e.g., high floor, MRT proximity) affect a property's value.
 
-## Future Enhancements
+## 5. Future Enhancements
 
 *   **Real-time Data Integration:** Implement mechanisms to automatically update the datasets from `data.gov.sg` or other relevant APIs to keep the model and analyses current.
 *   **Advanced Feature Engineering:**
